@@ -26,3 +26,11 @@ require("gitsigns").setup({
     virt_text_pos = "eol",
   },
 })
+
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+    javascript = { "eslint_d", "prettier" },
+    css = { "prettier" },
+  },
+})

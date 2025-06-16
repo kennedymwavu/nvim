@@ -12,12 +12,12 @@ require("lspconfig").air.setup({
   -- end,
 })
 
-require("lspconfig").r_language_server.setup({
-  on_attach = function(client, _)
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end,
-})
+-- require("lspconfig").r_language_server.setup({
+--   on_attach = function(client, _)
+--     client.server_capabilities.documentFormattingProvider = false
+--     client.server_capabilities.documentRangeFormattingProvider = false
+--   end,
+-- })
 
 require("gitsigns").setup({
   current_line_blame = true,

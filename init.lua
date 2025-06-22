@@ -2,6 +2,7 @@
 require("config.lazy")
 
 require("lspconfig").air.setup({
+  filetypes = { "r", "rmd", "qmd" },
   on_attach = function(_, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,

@@ -33,5 +33,8 @@ require("conform").setup({
     lua = { "stylua" },
     javascript = { "eslint_d", "prettier" },
     css = { "prettier" },
+    quarto = { "injected" },
+    rmd = { "injected" },
+    r = { "air" },
   },
 })

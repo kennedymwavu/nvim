@@ -38,3 +38,5 @@ require("conform").setup({
     r = { "air" },
   },
 })
+
+require("lspconfig").tsserver.setup({})

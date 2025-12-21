@@ -53,3 +53,14 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		})
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = { "*.rust" },
+	callback = function()
+		vim.fn.jobstart({ "rustfmt", vim.fn.expand("%:p") }, {
+			on_exit = function()
+				vim.cmd("edit!")
+			end,
+		})
+	end,
+})

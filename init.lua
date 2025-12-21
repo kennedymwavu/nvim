@@ -1,42 +1,47 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.laststatus = 0
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.clipboard = "unnamedplus"
 
-require("lspconfig").air.setup({
-  filetypes = { "r", "rmd", "qmd" },
-  on_attach = function(_, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format()
+vim.opt.cursorline = true
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffffff", bold = true })
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#928374" })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.R", "*.r" },
+  callback = function()
+    vim.fn.jobstart({ "air", "format", vim.fn.expand("%") }, { 
+      detach = true, 
+      on_exit = function()
+        vim.cmd("edit!")
       end,
     })
   end,
 })
 
-require("lspconfig").r_language_server.setup({
-  on_attach = function(client, _)
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.js", "*.jsx", "*.ts", "*.css", "*.html" },
+  callback = function()
+    vim.fn.jobstart({ "prettier", "--write", vim.fn.expand("%")}, {
+      detach = true,
+      on_exit = function()
+        vim.cmd("edit!")
+      end,
+    })
   end,
 })
 
-require("gitsigns").setup({
-  current_line_blame = true,
-  current_line_blame_opts = {
-    delay = 300,
-    virt_text_pos = "eol",
-  },
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.c", "*.h" },
+  callback = function()
+    vim.fn.jobstart({ "clang-format", "-i", vim.fn.expand("%") }, {
+      detach = true,
+      on_exit = function()
+        vim.cmd("edit!")
+      end,
+    })
+  end,
 })
-
-require("conform").setup({
-  formatters_by_ft = {
-    lua = { "stylua" },
-    javascript = { "eslint_d", "prettier" },
-    css = { "prettier" },
-    quarto = { "injected" },
-    rmd = { "injected" },
-    r = { "air" },
-  },
-})
-
-require("lspconfig").tsserver.setup({})

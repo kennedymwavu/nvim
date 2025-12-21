@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = { "*.js", "*.jsx", "*.ts", "*.css", "*.html" },
+	pattern = { "*.js", "*.jsx", "*.ts", "*.css", "*.html", "*.md" },
 	callback = function()
 		vim.fn.jobstart({ "prettier", "--write", vim.fn.expand("%:p") }, {
 			on_exit = function()

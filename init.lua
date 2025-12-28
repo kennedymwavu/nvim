@@ -1,15 +1,6 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
-
 vim.opt.laststatus = 0
-vim.opt.showcmd = true
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	callback = function()
-		vim.cmd('echo expand("%:~:.")')
-	end,
-})
-
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true

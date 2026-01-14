@@ -64,3 +64,14 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		})
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = { "*.go" },
+	callback = function()
+		vim.fn.jobstart({ "goimports", "-w", vim.fn.expand("%:p") }, {
+			on_exit = function()
+				vim.cmd("edit!")
+			end,
+		})
+	end,
+})

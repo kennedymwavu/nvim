@@ -1,0 +1,1 @@
+/home/mwavu/.config/omarchy/current/theme/neovim.lua

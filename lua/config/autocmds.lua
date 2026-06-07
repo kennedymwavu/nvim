@@ -36,9 +36,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     })
 
     -- comments --
-    -- vim.api.nvim_set_hl(0, "Comment", {
-    --   fg = "#a0a0a0",
-    --   italic = true,
-    -- })
+    vim.api.nvim_set_hl(0, "Comment", {
+      fg = "#8a94bf",
+      italic = true,
+    })
   end,
 })

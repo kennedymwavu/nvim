@@ -16,23 +16,23 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     -- line number colors --
     -- current line:
     vim.api.nvim_set_hl(0, "CursorLineNr", {
-      fg = "#f2f2f2",
+      fg = "#ffa500",
       bold = true,
     })
 
     -- other lines:
     vim.api.nvim_set_hl(0, "LineNr", {
-      fg = "#999999",
+      fg = "#8a94bf",
     })
 
     -- relative lines above:
     vim.api.nvim_set_hl(0, "LineNrAbove", {
-      fg = "#999999",
+      fg = "#8a94bf",
     })
 
     -- relative lines below:
     vim.api.nvim_set_hl(0, "LineNrBelow", {
-      fg = "#999999",
+      fg = "#8a94bf",
     })
 
     -- comments --

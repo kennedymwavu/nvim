@@ -14,6 +14,8 @@ return {
         html = { "prettier" },
         markdown = { "prettier" },
 
+        sql = { "sql_formatter" },
+
         c = { "clang_format" },
         cpp = { "clang_format" },
         -- headers will typically be detected as "c"
